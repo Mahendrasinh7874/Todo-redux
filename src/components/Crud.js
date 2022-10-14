@@ -72,38 +72,7 @@ const Crud = () => {
                 );
               })}
           </tbody>
-          {/* <tbody>
-            {data.length < 1 && (
-              <td colSpan={4} className="text-center p-3">
-             <h4> Data Not Added  </h4>
-              </td>
-            )}
-            {data &&
-              data.map((e, index) => {
-                return (
-                  <tr key={index}>
-                    
-                    <td>{e.fname}</td>
-                    <td>{e.lname}</td>
-                    <td>
-                      <button
-                        type="button"
-                        className="btn btn-primary ml-2"
-                        onClick={() => Update(e.id)}
-                      >
-                        Update
-                      </button>{" "}
-                      <button
-                        onClick={() => deleteData(e.id)}
-                        className="pl-2 btn btn-danger"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody> */}
+         
         </Table>
       </div>
     </div>
