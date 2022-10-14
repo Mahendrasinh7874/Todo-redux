@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-top: 100px;
 }
 
 .App-logo {
@@ -35,4 +36,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+input{
+  width: 20%;
+  margin: 10px 10px !important;
+  border-radius:5px  ;
+  border: 1px solid grey; 
+  outline: none;
+  padding: 10px 12px;
+}
+
+button{
+  padding: 12px 15px;
+}
+
+.data-container{
+  width: 50%;
+  margin: auto;
+  margin-top: 50px !important;
+}
+.btn-tt{
+  margin: 0 10px;
 }
