@@ -1,8 +1,8 @@
-import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "./index"
+import * as actionTypes from "../actions/index";
 
 export const addTodo = (data) => {
     return {
-        type: "ADD_TODO",
+        type: actionTypes.ADD_TODO,
         payload: {
             id: new Date().getTime().toString(),
             data: data,
@@ -13,7 +13,7 @@ export const addTodo = (data) => {
 
 export const deleteTodo = (id) => {
     return {
-        type: "DELETE_TODO",
+        type: actionTypes.DELETE_TODO,
         id,
     }
 }
@@ -21,7 +21,7 @@ export const deleteTodo = (id) => {
 
 export const updateTodo = (updatedId, updatedData) => {
     return {
-        type: UPDATE_TODO,
+        type: actionTypes.UPDATE_TODO,
         payload: {
             Uid: updatedId,
             Udata: updatedData,
