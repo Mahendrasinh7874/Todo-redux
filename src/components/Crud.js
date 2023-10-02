@@ -1,28 +1,44 @@
 import React, { useState } from "react";
-import { addTodo, deleteTodo } from "../store/actions/todoActions";
+import { addTodo, deleteTodo, updateTodo } from "../store/actions/todoActions";
 import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/Table";
 
 const Crud = () => {
   const dispatch = useDispatch();
+  const [updateId, setUpdateId] = useState(false)
   const list = useSelector((state) => state.todoReducer.data);
   const [value, setValue] = useState("");
+
+
 
   const onChange = (e) => {
     setValue(e.target.value);
   };
-  
+
+  console.log({ value });
+
   const Submit = (e) => {
     e.preventDefault();
-    dispatch(addTodo(value));
-    setValue("");
+    if (updateId) {
+      dispatch(updateTodo(updateId, value));
+      console.log({ value });
+      setUpdateId(false);
+      setValue("");
+    } else {
+      dispatch(addTodo(value));
+      setValue("");
+    }
   };
 
-  const deleted  = (id) => {
+
+  const deleted = (id) => {
     dispatch(deleteTodo(id));
   }
 
-  const update = () => {
+  const update = (id, data) => {
+    setValue(data);
+    setUpdateId(id)
+    console.log({ data, id });
 
   }
 
@@ -60,19 +76,19 @@ const Crud = () => {
             {list &&
               list.map((e) => {
                 return (
-                  <tr>
+                  <tr key={e.id}>
                     <td>{e.id}</td>
                     <td>{e.data}</td>
-                    
-                    <td><button onClick={() => update(e.id)}  className='btn btn-tt btn-primary'>Update</button>
-                    <button onClick={() => deleted(e.id)} className='btn btn-primary '  >Delete</button>
+
+                    <td><button onClick={() => update(e.id, e.data)} className='btn btn-tt btn-primary'>Update</button>
+                      <button onClick={() => deleted(e.id)} className='btn btn-primary '  >Delete</button>
                     </td>
 
                   </tr>
                 );
               })}
           </tbody>
-         
+
         </Table>
       </div>
     </div>
